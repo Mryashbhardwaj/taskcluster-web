@@ -78,15 +78,15 @@ module.exports = {
         historyApiFallback: { disableDotRule: true },
         proxy: {
           '/login': {
-            target: 'http://localhost:3050',
+            target: process.env.TASKCLUSTER_ROOT_URL,
           },
           '/graphql': {
-            target: 'http://localhost:3050',
+            target: process.env.TASKCLUSTER_ROOT_URL,
           },
           '/subscription': {
             ws: true,
             changeOrigin: true,
-            target: 'http://localhost:3050',
+            target: process.env.TASKCLUSTER_ROOT_URL,
           },
         },
       },
@@ -95,8 +95,9 @@ module.exports = {
         LOGIN_STRATEGIES: '',
         PORT: 9000,
         TASKCLUSTER_ROOT_URL: 'http://localhost:3050',
-        GRAPHQL_SUBSCRIPTION_ENDPOINT: undefined,
-        GA_TRACKING_ID: undefined,
+        GRAPHQL_SUBSCRIPTION_ENDPOINT: '',
+        GA_TRACKING_ID: '',
+        SENTRY_DSN: '',
       },
       babel: {
         plugins: [
